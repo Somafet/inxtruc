@@ -6,7 +6,7 @@ import { TextField } from '@/components/Fields'
 import { type Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Sign In',
+  title: 'Sign In'
 }
 
 export default function Login() {

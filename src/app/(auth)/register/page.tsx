@@ -6,7 +6,7 @@ import { SelectField, TextField } from '@/components/Fields'
 import { type Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Sign Up',
+  title: 'Sign Up'
 }
 
 export default function Register() {

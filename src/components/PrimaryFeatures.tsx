@@ -27,8 +27,8 @@ import {
   TupleLogo,
 } from '@/components/StockLogos'
 
-const MotionAppScreenHeader = motion(AppScreen.Header)
-const MotionAppScreenBody = motion(AppScreen.Body)
+const MotionAppScreenHeader = motion.create(AppScreen.Header)
+const MotionAppScreenBody = motion.create(AppScreen.Body)
 
 interface CustomAnimationProps {
   isForwards: boolean
@@ -384,7 +384,7 @@ function InvestScreen(props: ScreenProps) {
 }
 
 function usePrevious<T>(value: T) {
-  let ref = useRef<T>()
+  let ref = useRef<T>(undefined)
 
   useEffect(() => {
     ref.current = value
@@ -517,7 +517,9 @@ function FeaturesMobile() {
         {features.map((feature, featureIndex) => (
           <div
             key={featureIndex}
-            ref={(ref) => ref && (slideRefs.current[featureIndex] = ref)}
+            ref={(ref) => {
+              ref && (slideRefs.current[featureIndex] = ref)
+            }}
             className="w-full flex-none snap-center px-4 sm:px-6"
           >
             <div className="relative transform overflow-hidden rounded-2xl bg-gray-800 px-5 py-6">
