@@ -8,7 +8,7 @@
   <g>
     <title>Inxtruc</title>
     <ellipse
-      stroke="currentColor"
+      stroke="#0f766e"
       fill="none"
       cx="70"
       cy="70"
@@ -18,7 +18,7 @@
     />
     <ellipse
       fill="none"
-      stroke="currentColor"
+      stroke="#0f766e"
       stroke-width="10"
       cx="70"
       cy="70"
@@ -27,7 +27,7 @@
     />
     <line
       fill="none"
-      stroke="currentColor"
+      stroke="#0f766e"
       stroke-width="10"
       x1="106"
       y1="70"
