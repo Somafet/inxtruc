@@ -2,6 +2,7 @@ import * as Headless from '@headlessui/react'
 import { twMerge } from 'tailwind-merge'
 import React, { forwardRef } from 'react'
 import { Link } from './link'
+import { LoaderCircleIcon } from 'lucide-react'
 
 const styles = {
   base: [
@@ -162,7 +163,12 @@ type ButtonProps = (
   | { color?: keyof typeof styles.colors; outline?: never; plain?: never }
   | { color?: never; outline: true; plain?: never }
   | { color?: never; outline?: never; plain: true }
-) & { className?: string; children: React.ReactNode } & (
+) & {
+  className?: string
+  children: React.ReactNode
+  loading?: boolean
+  loadingShowContent?: boolean
+} & (
     | Omit<Headless.ButtonProps, 'as' | 'className'>
     | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
   )
@@ -174,6 +180,8 @@ export const Button = forwardRef(function Button(
     plain,
     className,
     children,
+    loading,
+    loadingShowContent,
     ...props
   }: ButtonProps,
   ref: React.ForwardedRef<HTMLElement>,
@@ -202,7 +210,26 @@ export const Button = forwardRef(function Button(
       className={twMerge(classes, 'cursor-default')}
       ref={ref}
     >
-      <TouchTarget>{children}</TouchTarget>
+      {loading ? (
+        <div
+          className={twMerge(
+            loadingShowContent
+              ? ''
+              : 'absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center',
+          )}
+        >
+          <LoaderCircleIcon className={twMerge('h-6 w-6 animate-spin')} />
+        </div>
+      ) : null}
+
+      <div
+        className={twMerge(
+          'inline-flex items-center gap-2',
+          loading && !loadingShowContent ? 'opacity-0' : '',
+        )}
+      >
+        <TouchTarget>{children}</TouchTarget>
+      </div>
     </Headless.Button>
   )
 })
