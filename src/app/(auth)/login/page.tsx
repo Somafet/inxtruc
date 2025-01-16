@@ -4,12 +4,16 @@ import { AuthLayout } from '@/components/AuthLayout'
 import { Button } from '@/components/ui/button'
 import { TextField } from '@/components/Fields'
 import { type Metadata } from 'next'
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
   title: 'Sign In'
 }
 
 export default function Login() {
+
+  redirect('/')
+
   return (
     <AuthLayout
       title="Sign in to account"

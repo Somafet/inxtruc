@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge'
 
 import '@/styles/tailwind.css'
 import { type Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 
 const poppins = localFont({
   src: [
@@ -20,12 +21,27 @@ const poppins = localFont({
   display: 'swap',
 })
 
+export const keywords = [
+  'Family tutorial app',
+  'Home-made guides platform',
+  'Household knowledge sharing',
+  'Step-by-step family instructions',
+  'Create and share tutorials',
+  'Family knowledge library',
+  'Household task manager',
+  'Offline family guides',
+  'Secure tutorial sharing',
+  'Custom family instructions',
+  'Easy home how-to guides',
+  'Household skills organizer',
+]
+
 export const metadata: Metadata = {
   title: {
     template: '%s - Inxtruc',
     default: 'Inxtruc - Guiding Families, Step by Step',
   },
-
+  keywords,
   description:
     'Inxtruc: Create and share step-by-step tutorials within your household. From recipes to repairs, streamline family knowledge sharing with this easy-to-use app. Join the waitlist today!',
 }
@@ -65,6 +81,7 @@ export default function RootLayout({
       </head>
       <body className="flex h-full flex-col">
         <div className="flex min-h-full flex-col">{children}</div>
+        <Analytics />
       </body>
     </html>
   )
