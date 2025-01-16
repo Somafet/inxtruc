@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 export function Container({
   className,
@@ -6,7 +6,7 @@ export function Container({
 }: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
-      className={clsx('mx-auto max-w-7xl px-4 sm:px-6 lg:px-8', className)}
+      className={twMerge('mx-auto max-w-7xl px-4 sm:px-6 lg:px-8', className)}
       {...props}
     />
   )

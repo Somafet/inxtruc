@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
-import { Button } from '@/components/Button'
+import { Button } from '@/components/ui/button'
 import { Container } from '@/components/Container'
 import { Logomark } from '@/components/Logo'
 
@@ -64,7 +64,7 @@ const plans = [
       'Advanced transaction anonymization',
       'Automated tax-loss harvesting',
     ],
-    logomarkClassName: 'fill-cyan-500',
+    logomarkClassName: 'fill-teal-700',
   },
 ]
 
@@ -116,22 +116,22 @@ function Plan({
 }) {
   return (
     <section
-      className={clsx(
+      className={twMerge(
         'flex flex-col overflow-hidden rounded-3xl p-6 shadow-lg shadow-gray-900/5',
         featured ? 'order-first bg-gray-900 lg:order-none' : 'bg-white',
       )}
     >
       <h3
-        className={clsx(
+        className={twMerge(
           'flex items-center text-sm font-semibold',
           featured ? 'text-white' : 'text-gray-900',
         )}
       >
-        <Logomark className={clsx('h-6 w-6 flex-none', logomarkClassName)} />
+        <Logomark className={twMerge('h-6 w-6 flex-none', logomarkClassName)} />
         <span className="ml-4">{name}</span>
       </h3>
       <p
-        className={clsx(
+        className={twMerge(
           'relative mt-5 flex text-3xl tracking-tight',
           featured ? 'text-white' : 'text-gray-900',
         )}
@@ -142,7 +142,7 @@ function Plan({
           <>
             <span
               aria-hidden={activePeriod === 'Annually'}
-              className={clsx(
+              className={twMerge(
                 'transition duration-300',
                 activePeriod === 'Annually' &&
                   'pointer-events-none translate-x-6 select-none opacity-0',
@@ -152,7 +152,7 @@ function Plan({
             </span>
             <span
               aria-hidden={activePeriod === 'Monthly'}
-              className={clsx(
+              className={twMerge(
                 'absolute left-0 top-0 transition duration-300',
                 activePeriod === 'Monthly' &&
                   'pointer-events-none -translate-x-6 select-none opacity-0',
@@ -164,7 +164,7 @@ function Plan({
         )}
       </p>
       <p
-        className={clsx(
+        className={twMerge(
           'mt-3 text-sm',
           featured ? 'text-gray-300' : 'text-gray-700',
         )}
@@ -174,7 +174,7 @@ function Plan({
       <div className="order-last mt-6">
         <ul
           role="list"
-          className={clsx(
+          className={twMerge(
             '-my-2 divide-y text-sm',
             featured
               ? 'divide-gray-800 text-gray-300'
@@ -184,9 +184,9 @@ function Plan({
           {features.map((feature) => (
             <li key={feature} className="flex py-2">
               <CheckIcon
-                className={clsx(
+                className={twMerge(
                   'h-6 w-6 flex-none',
-                  featured ? 'text-white' : 'text-cyan-500',
+                  featured ? 'text-white' : 'text-teal-700',
                 )}
               />
               <span className="ml-4">{feature}</span>
@@ -242,7 +242,7 @@ export function Pricing() {
                 <RadioGroup.Option
                   key={period}
                   value={period}
-                  className={clsx(
+                  className={twMerge(
                     'cursor-pointer border border-gray-300 px-[calc(theme(spacing.3)-1px)] py-[calc(theme(spacing.2)-1px)] text-sm text-gray-700 outline-2 outline-offset-2 transition-colors hover:border-gray-400',
                     period === 'Monthly'
                       ? 'rounded-l-lg'
@@ -255,8 +255,8 @@ export function Pricing() {
             </RadioGroup>
             <div
               aria-hidden="true"
-              className={clsx(
-                'pointer-events-none absolute inset-0 z-10 grid grid-cols-2 overflow-hidden rounded-lg bg-cyan-500 transition-all duration-300',
+              className={twMerge(
+                'pointer-events-none absolute inset-0 z-10 grid grid-cols-2 overflow-hidden rounded-lg bg-teal-700 transition-all duration-300',
                 activePeriod === 'Monthly'
                   ? '[clip-path:inset(0_50%_0_0)]'
                   : '[clip-path:inset(0_0_0_calc(50%-1px))]',
@@ -265,7 +265,7 @@ export function Pricing() {
               {['Monthly', 'Annually'].map((period) => (
                 <div
                   key={period}
-                  className={clsx(
+                  className={twMerge(
                     'py-2 text-center text-sm font-semibold text-white',
                     period === 'Annually' && '-ml-px',
                   )}

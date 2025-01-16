@@ -1,43 +1,45 @@
 import { useId } from 'react'
 
 import { Container } from '@/components/Container'
+import { Heading } from './ui/heading'
+import { Text } from './ui/text'
 
 const features = [
   {
-    name: 'Invest any amount',
+    name: 'View anytime anywhere',
     description:
-      'Whether it’s $1 or $1,000,000, we can put your money to work for you.',
+      'Whether it’s on the go or at home, with offline access you can view your guides anytime, anywhere.',
     icon: DeviceArrowIcon,
   },
   {
-    name: 'Build a balanced portfolio',
+    name: 'Build a diverse list of guides',
     description:
-      'Invest in different industries to find the most opportunities to win huge.',
+      'From cooking to gardening, you can build a diverse list of guides that cater to your family’s interests.',
     icon: DeviceCardsIcon,
   },
   {
-    name: 'Trade in real-time',
+    name: 'Lifetime access',
     description:
-      'Get insider tips on big stock moves and act on them within seconds.',
+      'With lifetime access, you can build a library of guides that can be passed down for generations.',
     icon: DeviceClockIcon,
   },
   {
-    name: 'Profit from your network',
+    name: 'Profit from the community',
     description:
-      'Invite new insiders to get tips faster and beat even other Pocket users.',
+      'It’s on our roadmap to allow families to share their guides with the community. Searching and downloading community guides will be free!',
     icon: DeviceListIcon,
   },
   {
-    name: 'Encrypted and anonymized',
+    name: 'Security first',
     description:
-      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
+      'All of your guides are encrypted and stored securely in the cloud. Only you and your family have access to your guides. Unless you share them with the community.',
     icon: DeviceLockIcon,
   },
   {
-    name: 'Portfolio tracking',
+    name: 'Personalized for Your Family',
     description:
-      'Watch your investments grow exponentially, leaving other investors in the dust.',
-    icon: DeviceChartIcon,
+      'Tailor your guides to suit your household’s unique needs with custom tags, categories, and even photos or videos. Every guide can be personalized to make it truly yours!',
+    icon: DeviceUserIcon,
   },
 ]
 
@@ -140,6 +142,26 @@ function DeviceListIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+function DeviceUserIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
+      <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M16 23a3 3 0 100-6 3 3 0 000 6zm-1 2a4 4 0 00-4 4v1a2 2 0 002 2h6a2 2 0 002-2v-1a4 4 0 00-4-4h-2z"
+        fill="#737373"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5 4a4 4 0 014-4h14a4 4 0 014 4v24a4.002 4.002 0 01-3.01 3.877c-.535.136-.99-.325-.99-.877s.474-.98.959-1.244A2 2 0 0025 28V4a2 2 0 00-2-2h-1.382a1 1 0 00-.894.553l-.448.894a1 1 0 01-.894.553h-6.764a1 1 0 01-.894-.553l-.448-.894A1 1 0 0010.382 2H9a2 2 0 00-2 2v24a2 2 0 001.041 1.756C8.525 30.02 9 30.448 9 31s-.455 1.013-.99.877A4.002 4.002 0 015 28V4z"
+        fill="#A3A3A3"
+      />
+    </svg>
+  )
+}
+
 function DeviceLockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
@@ -195,13 +217,17 @@ export function SecondaryFeatures() {
     >
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-medium tracking-tight text-gray-900">
-            Now is the time to build your portfolio.
-          </h2>
-          <p className="mt-2 text-lg text-gray-600">
-            With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
-          </p>
+          <Heading
+            level={2}
+            className="text-3xl font-medium tracking-tight text-gray-900 sm:text-3xl"
+          >
+            Now is the time to start building your family guides.
+          </Heading>
+          <Text className="mt-2 text-lg text-gray-600 sm:text-lg">
+            Inxtruc is the perfect investment for families looking to preserve,
+            organize, and share their collective knowledge, turning everyday
+            tasks into lasting step-by-step guides that everyone can follow.
+          </Text>
         </div>
         <ul
           role="list"
@@ -213,10 +239,10 @@ export function SecondaryFeatures() {
               className="rounded-2xl border border-gray-200 p-8"
             >
               <feature.icon className="h-8 w-8" />
-              <h3 className="mt-6 font-semibold text-gray-900">
+              <Heading level={3} className="mt-6 font-semibold text-gray-900">
                 {feature.name}
-              </h3>
-              <p className="mt-2 text-gray-700">{feature.description}</p>
+              </Heading>
+              <Text className="mt-2 text-gray-700">{feature.description}</Text>
             </li>
           ))}
         </ul>

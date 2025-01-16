@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Popover } from '@headlessui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { Button } from '@/components/Button'
+import { Button } from '@/components/ui/button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLinks } from '@/components/NavLinks'
@@ -57,7 +57,7 @@ export function Header() {
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-16">
             <Link href="/" aria-label="Home">
-              <Logo className="h-10 w-auto" />
+              <Logo className="h-10 w-auto text-gray-900 dark:text-gray-100" />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
               <NavLinks />
@@ -115,9 +115,7 @@ export function Header() {
                             <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button href="/login" variant="outline">
-                              Log in
-                            </Button>
+                            <Button href="/login">Log in</Button>
                             <Button href="#">Download the app</Button>
                           </div>
                         </Popover.Panel>
@@ -127,12 +125,12 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <Button href="/login" variant="outline" className="hidden lg:block">
+            {/* <Button href="/login" color="teal" className="hidden lg:block">
               Log in
             </Button>
             <Button href="#" className="hidden lg:block">
               Download
-            </Button>
+            </Button> */}
           </div>
         </Container>
       </nav>

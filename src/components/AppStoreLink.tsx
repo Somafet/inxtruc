@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 export function AppStoreLink({
   color = 'black',
@@ -10,7 +10,7 @@ export function AppStoreLink({
     <Link
       href="#"
       aria-label="Download on the App Store"
-      className={clsx(
+      className={twMerge(
         'rounded-lg transition-colors',
         color === 'black'
           ? 'bg-gray-800 text-white hover:bg-gray-900'

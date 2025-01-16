@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button'
+import { Button } from '@/components/ui/button'
 import { CirclesBackground } from '@/components/CirclesBackground'
 import { Container } from '@/components/Container'
 import { Layout } from '@/components/Layout'

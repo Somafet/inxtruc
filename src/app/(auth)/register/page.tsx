@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { AuthLayout } from '@/components/AuthLayout'
-import { Button } from '@/components/Button'
+import { Button } from '@/components/ui/button'
 import { SelectField, TextField } from '@/components/Fields'
 import { type Metadata } from 'next'
 

@@ -30,6 +30,9 @@ export default {
         'spin-reverse-slow': 'spin-reverse 4s linear infinite',
         'spin-reverse-slower': 'spin-reverse 6s linear infinite',
       },
+      borderWidth: {
+        1: '1px',
+      },
       borderRadius: {
         '4xl': '2rem',
         '5xl': '2.5rem',
@@ -62,6 +65,10 @@ export default {
       },
       maxWidth: {
         '2xl': '40rem',
+      },
+      transitionProperty: {
+        height: 'height',
+        width: 'width',
       },
     },
   },

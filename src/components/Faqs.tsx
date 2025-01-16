@@ -1,55 +1,57 @@
 import { Container } from '@/components/Container'
+import { Heading } from './ui/heading'
+import { Text, TextLink } from './ui/text'
 
 const faqs = [
   [
     {
-      question: 'How do I know the tips are good?',
+      question: 'What is Inxtruc, and how does it work?',
       answer:
-        'Our whole business depends on our tips being good, so it’s in our best interest that they are. The results of our customers speak for themselves, just trust us.',
+        'Inxtruc is an app that lets families create, organize, and share home-made tutorials for everyday tasks. You can build step-by-step guides with text, images, and videos, accessible anytime, anywhere.',
     },
     {
-      question: 'Isn’t this insider trading?',
+      question: 'Who is Inxtruc for?',
       answer:
-        'Yes exactly. But at scale! Historically you could only make insider trades with knowledge from your direct network. Pocket brings you insider trading tips from people you don’t even know.',
+        'Inxtruc is designed for families, couples, or households looking to preserve knowledge, teach new skills, or share instructions on recurring tasks.',
     },
     {
-      question: 'But isn’t insider trading illegal?',
+      question: 'Can I access my guides offline?',
       answer:
-        'Here’s the thing: you’re the one doing the insider trading, not us. We’re just giving you the tips and some tools to make trades. We’re not doing anything wrong here.',
-    },
-  ],
-  [
-    {
-      question: 'Do the people giving you tips realize what they are doing?',
-      answer:
-        'Again I would argue this isn’t really our responsibility. People make their own choices. If they don’t research the consequences that’s on them, not on us.',
-    },
-    {
-      question: 'Where is Pocket based?',
-      answer:
-        'Let’s just say it’s not somewhere where the SEC is going to find us.',
-    },
-    {
-      question: 'Is there any age limit to trading on Pocket?',
-      answer:
-        'For our free plan, the age limit is based on the minimum age to trade in your country of residence. Our VIP plan uses advanced transaction anonymization though, so you can use that plan even if you’re 9 years old. Or a dog.',
+        'Yes, Inxtruc allows you to download guides for offline access so you can view them even without an internet connection.',
     },
   ],
   [
     {
-      question: 'How did you get this on the App Store?',
+      question: 'Is my data secure?',
       answer:
-        'Honestly we were surprised too, but eventually we found out that the app reviewer found the app so compelling they approved it just so they could use it themselves.',
+        'Absolutely. All guides are encrypted and stored securely in the cloud. Only you and your family have access to them unless you choose to share guides with the community.',
     },
     {
-      question: 'How do I explain the money I withdraw from Pocket to the IRS?',
+      question: 'What can I include in a guide?',
       answer:
-        'This feels like one-hundred percent a you problem. Pocket is not responsible in any way for your tax returns.',
+        'You can include text instructions, audio recordings, photos, videos, and custom tags to make your guides detailed and personalized.',
     },
     {
-      question: 'How do I become an insider?',
+      question: 'How many guides can I create?',
       answer:
-        'Contact us with some details about your industry and the type of access you have to apply for an insider account. Once approved, we’ll send you a guide on collecting insider information without being detected at work.',
+        'The number of guides depends on your subscription plan. The free tier includes a limited number, while premium plans offer unlimited guide creation.',
+    },
+  ],
+  [
+    {
+      question: 'Can I share my guides with others?',
+      answer:
+        'Yes, you can share guides within your household or, in the future, with the wider Inxtruc community. Community sharing is on our roadmap and will allow families to exchange knowledge freely.',
+    },
+    {
+      question: 'What devices is Inxtruc available on?',
+      answer:
+        'Inxtruc is available on iOS, Android devices and it is on our roadmap to include web ensuring you can use it on any platform you prefer.',
+    },
+    {
+      question: 'How much does Inxtruc cost?',
+      answer:
+        'Inxtruc offers a free tier with limited features and paid plans for those who need additional storage, family profiles, and more. Pricing details will be revealed when we are closer to launch. Rest assured, all early adopters will receive a special discount.',
     },
   ],
 ]
@@ -63,22 +65,18 @@ export function Faqs() {
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2
+          <Heading
+            level={2}
             id="faqs-title"
-            className="text-3xl font-medium tracking-tight text-gray-900"
+            className="text-3xl font-medium tracking-tight sm:text-3xl"
           >
             Frequently asked questions
-          </h2>
-          <p className="mt-2 text-lg text-gray-600">
+          </Heading>
+          <Text className="mt-2 text-lg sm:text-lg">
             If you have anything else you want to ask,{' '}
-            <a
-              href="mailto:info@example.com"
-              className="text-gray-900 underline"
-            >
-              reach out to us
-            </a>
-            .
-          </p>
+            <TextLink href="mailto:info@inxtruc.com">reach out to us</TextLink>,
+            we always read your messages.
+          </Text>
         </div>
         <ul
           role="list"
@@ -89,10 +87,15 @@ export function Faqs() {
               <ul role="list" className="space-y-10">
                 {column.map((faq, faqIndex) => (
                   <li key={faqIndex}>
-                    <h3 className="text-lg font-semibold leading-6 text-gray-900">
+                    <Heading
+                      level={3}
+                      className="text-lg font-semibold leading-6 sm:text-lg"
+                    >
                       {faq.question}
-                    </h3>
-                    <p className="mt-4 text-sm text-gray-700">{faq.answer}</p>
+                    </Heading>
+                    <Text className="mt-4 text-sm sm:text-sm">
+                      {faq.answer}
+                    </Text>
                   </li>
                 ))}
               </ul>

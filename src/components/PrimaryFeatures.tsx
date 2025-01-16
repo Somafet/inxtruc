@@ -1,8 +1,13 @@
 'use client'
 
 import { Fragment, useEffect, useId, useRef, useState } from 'react'
-import { Tab } from '@headlessui/react'
-import clsx from 'clsx'
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Tab,
+} from '@headlessui/react'
+import { twMerge } from 'tailwind-merge'
 import {
   AnimatePresence,
   type MotionProps,
@@ -17,15 +22,18 @@ import { CircleBackground } from '@/components/CircleBackground'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
 import {
-  DiageoLogo,
-  LaravelLogo,
-  MirageLogo,
-  ReversableLogo,
-  StatamicLogo,
-  StaticKitLogo,
-  TransistorLogo,
-  TupleLogo,
-} from '@/components/StockLogos'
+  ChevronUpIcon,
+  WifiIcon,
+  ChevronRight,
+  WashingMachineIcon,
+  PrinterCheckIcon,
+  CookingPot,
+} from 'lucide-react'
+import { Text } from '@/components/ui/text'
+import { Link } from '@/components/ui/link'
+import settingsStep from '@/images/iphone-settings-step.png'
+import Image from 'next/image'
+import { Heading } from './ui/heading'
 
 const MotionAppScreenHeader = motion.create(AppScreen.Header)
 const MotionAppScreenBody = motion.create(AppScreen.Body)
@@ -37,25 +45,24 @@ interface CustomAnimationProps {
 
 const features = [
   {
-    name: 'Invite friends for better returns',
+    name: 'Add all your family members',
     description:
-      'For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.',
+      'Add up to 5 family members to view and create guides for your household.',
     icon: DeviceUserIcon,
     screen: InviteScreen,
   },
   {
-    name: 'Notifications on stock dips',
-    description:
-      'Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.',
+    name: 'Notifications on new guides',
+    description: 'Get notified when a new guide is shared to your household.',
     icon: DeviceNotificationIcon,
-    screen: StocksScreen,
+    screen: GuidesList,
   },
   {
-    name: 'Invest what you want',
+    name: 'View guides on any device',
     description:
-      'We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.',
+      'View step-by-step guides on your phone, tablet, or computer. Each guide only shows one step at a time so you can make progress without getting overwhelmed.',
     icon: DeviceTouchIcon,
-    screen: InvestScreen,
+    screen: GuideScreen,
   },
 ]
 
@@ -194,10 +201,10 @@ function InviteScreen(props: ScreenProps) {
   return (
     <AppScreen className="w-full">
       <MotionAppScreenHeader {...(props.animated ? headerAnimation : {})}>
-        <AppScreen.Title>Invite people</AppScreen.Title>
+        <AppScreen.Title>Invite your family</AppScreen.Title>
         <AppScreen.Subtitle>
-          Get tips <span className="text-white">5s sooner</span> for every
-          invite.
+          Get up to <span className="text-white">5</span> of your loved ones to
+          learn together.
         </AppScreen.Subtitle>
       </MotionAppScreenHeader>
       <MotionAppScreenBody
@@ -206,18 +213,20 @@ function InviteScreen(props: ScreenProps) {
         <div className="px-4 py-6">
           <div className="space-y-6">
             {[
-              { label: 'Full name', value: 'Albert H. Wiggin' },
-              { label: 'Email address', value: 'awiggin@chase.com' },
+              { label: 'Name', value: 'Pop-pop' },
+              { label: 'Email address', value: 'awiggin@example.com' },
             ].map((field) => (
               <div key={field.label}>
-                <div className="text-sm text-gray-500">{field.label}</div>
-                <div className="mt-2 border-b border-gray-200 pb-2 text-sm text-gray-900">
+                <div className="text-sm text-gray-500 dark:text-white">
+                  {field.label}
+                </div>
+                <div className="mt-2 border-b border-gray-200 pb-2 text-sm text-gray-900 dark:text-gray-300">
                   {field.value}
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-6 rounded-lg bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white">
+          <div className="mt-6 rounded-lg bg-teal-700 px-3 py-2 text-center text-sm font-semibold text-white">
             Invite person
           </div>
         </div>
@@ -226,157 +235,300 @@ function InviteScreen(props: ScreenProps) {
   )
 }
 
-function StocksScreen(props: ScreenProps) {
+function GuidesList(props: ScreenProps) {
+  const contentRef = useRef<HTMLDivElement>(null)
   return (
     <AppScreen className="w-full">
       <MotionAppScreenHeader {...(props.animated ? headerAnimation : {})}>
-        <AppScreen.Title>Stocks</AppScreen.Title>
-        <AppScreen.Subtitle>March 9, 2022</AppScreen.Subtitle>
+        <AppScreen.Title>Guides</AppScreen.Title>
+        <AppScreen.Subtitle>
+          All your household guides in one place
+        </AppScreen.Subtitle>
       </MotionAppScreenHeader>
       <MotionAppScreenBody
+        className="px-4 py-6"
         {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
       >
-        <div className="divide-y divide-gray-100">
-          {[
-            {
-              name: 'Laravel',
-              price: '4,098.01',
-              change: '+4.98%',
-              color: '#F9322C',
-              logo: LaravelLogo,
-            },
-            {
-              name: 'Tuple',
-              price: '5,451.10',
-              change: '-3.38%',
-              color: '#5A67D8',
-              logo: TupleLogo,
-            },
-            {
-              name: 'Transistor',
-              price: '4,098.41',
-              change: '+6.25%',
-              color: '#2A5B94',
-              logo: TransistorLogo,
-            },
-            {
-              name: 'Diageo',
-              price: '250.65',
-              change: '+1.25%',
-              color: '#3320A7',
-              logo: DiageoLogo,
-            },
-            {
-              name: 'StaticKit',
-              price: '250.65',
-              change: '-3.38%',
-              color: '#2A3034',
-              logo: StaticKitLogo,
-            },
-            {
-              name: 'Statamic',
-              price: '5,040.85',
-              change: '-3.11%',
-              color: '#0EA5E9',
-              logo: StatamicLogo,
-            },
-            {
-              name: 'Mirage',
-              price: '140.44',
-              change: '+9.09%',
-              color: '#16A34A',
-              logo: MirageLogo,
-            },
-            {
-              name: 'Reversable',
-              price: '550.60',
-              change: '-1.25%',
-              color: '#8D8D8D',
-              logo: ReversableLogo,
-            },
-          ].map((stock) => (
-            <div key={stock.name} className="flex items-center gap-4 px-4 py-3">
-              <div
-                className="flex-none rounded-full"
-                style={{ backgroundColor: stock.color }}
-              >
-                <stock.logo className="h-10 w-10" />
-              </div>
-              <div className="flex-auto text-sm text-gray-900">
-                {stock.name}
-              </div>
-              <div className="flex-none text-right">
-                <div className="text-sm font-medium text-gray-900">
-                  {stock.price}
-                </div>
-                <div
-                  className={clsx(
-                    'text-xs leading-5',
-                    stock.change.startsWith('+')
-                      ? 'text-cyan-500'
-                      : 'text-gray-500',
-                  )}
+        <div className="grid grid-cols-1 gap-4">
+          <Disclosure defaultOpen>
+            {({ open }) => (
+              <div className="border-1 overflow-hidden rounded-lg ring-1 ring-inset ring-black/5">
+                <dt>
+                  <DisclosureButton
+                    className={twMerge(
+                      'group flex w-full items-start justify-between rounded-lg bg-white px-4 py-2 text-left dark:bg-gray-800',
+                      open ? 'border-b-1' : 'border-0',
+                    )}
+                  >
+                    <Text className="font-semibold">Tech guides</Text>
+                    <motion.div
+                      animate={{
+                        rotate: open ? 180 : 0,
+                      }}
+                      transition={{ duration: 0.2 }}
+                      className="ml-6 flex h-7 items-center"
+                    >
+                      <ChevronUpIcon className="h-5 w-5 text-gray-400 dark:text-gray-100" />
+                    </motion.div>
+                  </DisclosureButton>
+                </dt>
+
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={{
+                    height: open
+                      ? contentRef.current?.scrollHeight || 'auto'
+                      : 0,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: 'easeInOut',
+                  }}
+                  style={{ overflow: 'hidden' }}
                 >
-                  {stock.change}
-                </div>
+                  <DisclosurePanel
+                    ref={contentRef}
+                    className="bg-gray-50 p-4 dark:bg-gray-900"
+                  >
+                    <ul role="list" className="space-y-4">
+                      <li className="shadow-xs col-span-1 flex rounded-md">
+                        <div className="flex w-10 shrink-0 items-center justify-center rounded-l-md bg-pink-600 text-sm font-medium text-white">
+                          <WifiIcon className="size-5" />
+                        </div>
+                        <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                          <div className="flex-1 truncate px-4 py-2 text-sm">
+                            <Link
+                              href="#"
+                              className="font-medium text-gray-900 hover:text-gray-600"
+                            >
+                              Connect to Wi-Fi
+                            </Link>
+                            <Text>3 Steps</Text>
+                          </div>
+                          <div className="shrink-0 pr-2">
+                            <ChevronRight className="h-5 w-5 text-gray-400" />
+                          </div>
+                        </div>
+                      </li>
+                      <li className="shadow-xs col-span-1 flex rounded-md">
+                        <div className="flex w-10 shrink-0 items-center justify-center rounded-l-md bg-blue-600 text-sm font-medium text-white">
+                          <PrinterCheckIcon className="size-5" />
+                        </div>
+                        <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                          <div className="flex-1 truncate px-4 py-2 text-sm">
+                            <Link
+                              href="#"
+                              className="font-medium text-gray-900 hover:text-gray-600"
+                            >
+                              Print a document
+                            </Link>
+                            <Text>8 Steps</Text>
+                          </div>
+                          <div className="shrink-0 pr-2">
+                            <ChevronRight className="h-5 w-5 text-gray-400" />
+                          </div>
+                        </div>
+                      </li>
+                      <li className="shadow-xs col-span-1 flex rounded-md">
+                        <div className="border-1 flex w-10 shrink-0 items-center justify-center rounded-l-md bg-white text-sm font-medium text-white">
+                          <svg
+                            role="img"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="size-5 fill-[#FF0000]"
+                          >
+                            <title>YouTube</title>
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                          </svg>
+                        </div>
+                        <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                          <div className="flex-1 truncate px-4 py-2 text-sm">
+                            <Link
+                              href="#"
+                              className="font-medium text-gray-900 hover:text-gray-600"
+                            >
+                              YouTube on TV
+                            </Link>
+                            <Text>4 Steps</Text>
+                          </div>
+                          <div className="shrink-0 pr-2">
+                            <ChevronRight className="h-5 w-5 text-gray-400" />
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </DisclosurePanel>
+                </motion.div>
               </div>
-            </div>
-          ))}
+            )}
+          </Disclosure>
+
+          <Disclosure>
+            {({ open }) => (
+              <div className="border-1 overflow-hidden rounded-lg ring-1 ring-inset ring-black/5">
+                <dt>
+                  <DisclosureButton
+                    className={twMerge(
+                      'group flex w-full items-start justify-between rounded-lg bg-white px-4 py-2 text-left dark:bg-gray-800',
+                      open ? 'border-b-1' : 'border-0',
+                    )}
+                  >
+                    <Text className="font-semibold">Cleaning</Text>
+                    <motion.div
+                      animate={{
+                        rotate: open ? 180 : 0,
+                      }}
+                      transition={{ duration: 0.2 }}
+                      className="ml-6 flex h-7 items-center"
+                    >
+                      <ChevronUpIcon className="h-5 w-5 text-gray-400 dark:text-gray-100" />
+                    </motion.div>
+                  </DisclosureButton>
+                </dt>
+
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={{
+                    height: open
+                      ? contentRef.current?.scrollHeight || 'auto'
+                      : 0,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: 'easeInOut',
+                  }}
+                  style={{ overflow: 'hidden' }}
+                >
+                  <DisclosurePanel
+                    ref={contentRef}
+                    className="bg-gray-50 p-4 dark:bg-gray-900"
+                  >
+                    <ul role="list">
+                      <li className="shadow-xs col-span-1 flex rounded-md">
+                        <div className="flex w-10 shrink-0 items-center justify-center rounded-l-md bg-cyan-600 text-sm font-medium text-white">
+                          <WashingMachineIcon className="size-5" />
+                        </div>
+                        <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                          <div className="flex-1 truncate px-4 py-2 text-sm">
+                            <Link
+                              href="#"
+                              className="font-medium text-gray-900 hover:text-gray-600"
+                            >
+                              Run a laundry cycle
+                            </Link>
+                            <Text>4 Steps</Text>
+                          </div>
+                          <div className="shrink-0 pr-2">
+                            <ChevronRight className="h-5 w-5 text-gray-400" />
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </DisclosurePanel>
+                </motion.div>
+              </div>
+            )}
+          </Disclosure>
+
+          <Disclosure>
+            {({ open }) => (
+              <div className="border-1 overflow-hidden rounded-lg ring-1 ring-inset ring-black/5">
+                <dt>
+                  <DisclosureButton
+                    className={twMerge(
+                      'group flex w-full items-start justify-between rounded-lg bg-white px-4 py-2 text-left dark:bg-gray-800',
+                      open ? 'border-b-1' : 'border-0',
+                    )}
+                  >
+                    <Text className="font-semibold">Cooking</Text>
+                    <motion.div
+                      animate={{
+                        rotate: open ? 180 : 0,
+                      }}
+                      transition={{ duration: 0.2 }}
+                      className="ml-6 flex h-7 items-center"
+                    >
+                      <ChevronUpIcon className="h-5 w-5 text-gray-400 dark:text-gray-100" />
+                    </motion.div>
+                  </DisclosureButton>
+                </dt>
+
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={{
+                    height: open
+                      ? contentRef.current?.scrollHeight || 'auto'
+                      : 0,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: 'easeInOut',
+                  }}
+                  style={{ overflow: 'hidden' }}
+                >
+                  <DisclosurePanel
+                    ref={contentRef}
+                    className="bg-gray-50 p-4 dark:bg-gray-900"
+                  >
+                    <ul role="list">
+                      <li className="shadow-xs col-span-1 flex rounded-md">
+                        <div className="flex w-10 shrink-0 items-center justify-center rounded-l-md bg-blue-600 text-sm font-medium text-white">
+                          <CookingPot className="size-5" />
+                        </div>
+                        <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+                          <div className="flex-1 truncate px-4 py-2 text-sm">
+                            <Link
+                              href="#"
+                              className="font-medium text-gray-900 hover:text-gray-600"
+                            >
+                              Perfectly Fluffy Rice
+                            </Link>
+                            <Text>6 Steps</Text>
+                          </div>
+                          <div className="shrink-0 pr-2">
+                            <ChevronRight className="h-5 w-5 text-gray-400" />
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </DisclosurePanel>
+                </motion.div>
+              </div>
+            )}
+          </Disclosure>
         </div>
       </MotionAppScreenBody>
     </AppScreen>
   )
 }
 
-function InvestScreen(props: ScreenProps) {
+function GuideScreen(props: ScreenProps) {
   return (
-    <AppScreen className="w-full">
+    <AppScreen className="max-h-full w-full">
       <MotionAppScreenHeader {...(props.animated ? headerAnimation : {})}>
-        <AppScreen.Title>Buy $LA</AppScreen.Title>
+        <AppScreen.Title>Connect to Wi-Fi</AppScreen.Title>
         <AppScreen.Subtitle>
-          <span className="text-white">$34.28</span> per share
+          Step <span className="text-white">1</span> of 3
         </AppScreen.Subtitle>
       </MotionAppScreenHeader>
       <MotionAppScreenBody
+        className="max-h-[567px] overflow-y-auto"
         {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
       >
-        <div className="px-4 py-6">
-          <div className="space-y-4">
-            {[
-              { label: 'Number of shares', value: '100' },
-              {
-                label: 'Current market price',
-                value: (
-                  <div className="flex">
-                    $34.28
-                    <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6">
-                      <path
-                        d="M17 15V7H9M17 7 7 17"
-                        stroke="#06B6D4"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                ),
-              },
-              { label: 'Estimated cost', value: '$3,428.00' },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex justify-between border-b border-gray-100 pb-4"
-              >
-                <div className="text-sm text-gray-500">{item.label}</div>
-                <div className="text-sm font-semibold text-gray-900">
-                  {item.value}
-                </div>
-              </div>
-            ))}
-            <div className="rounded-lg bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white">
-              Buy shares
-            </div>
-          </div>
+        <div className="flex flex-col items-center px-4 py-6">
+          <Text className="sm:mb-4">
+            Start by tapping the Settings icon on your iPhone. It should be on
+            the first screen when you unlock your phone.
+          </Text>
+          <Image
+            src={settingsStep.src}
+            placeholder="blur"
+            blurDataURL={settingsStep.blurDataURL}
+            alt="highlighting iphone settings icon"
+            width={300}
+            height={500}
+            style={{ objectFit: 'contain' }}
+          />
         </div>
       </MotionAppScreenBody>
     </AppScreen>
@@ -446,7 +598,7 @@ function FeaturesDesktop() {
       </Tab.List>
       <div className="relative col-span-6">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <CircleBackground color="#13B5C8" className="animate-spin-slower" />
+          <CircleBackground color="#0f766e" className="animate-spin-slower" />
         </div>
         <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
           <Tab.Panels as={Fragment}>
@@ -550,7 +702,7 @@ function FeaturesMobile() {
           <button
             type="button"
             key={featureIndex}
-            className={clsx(
+            className={twMerge(
               'relative h-0.5 w-4 rounded-full',
               featureIndex === activeIndex ? 'bg-gray-300' : 'bg-gray-500',
             )}
@@ -579,15 +731,18 @@ export function PrimaryFeatures() {
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
-          <h2 className="text-3xl font-medium tracking-tight text-white">
-            Every feature you need to win. Try it for yourself.
-          </h2>
-          <p className="mt-2 text-lg text-gray-400">
-            Pocket was built for investors like you who play by their own rules
-            and aren’t going to let SEC regulations get in the way of their
-            dreams. If other investing tools are afraid to build it, Pocket has
-            it.
-          </p>
+          <Heading
+            level={2}
+            className="text-3xl font-medium tracking-tight text-white sm:text-3xl"
+          >
+            Every feature you need to keep your family up to date. Try it
+            yourself.
+          </Heading>
+          <Text className="mt-2 text-lg text-gray-400">
+            Inxtruc was built to make you family’s life easier. With guides for
+            a variety of tasks, you can keep your family up to date with the
+            latest tech or household chores.
+          </Text>
         </div>
       </Container>
       <div className="mt-16 md:hidden">

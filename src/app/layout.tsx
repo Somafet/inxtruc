@@ -1,23 +1,33 @@
-import { Inter } from 'next/font/google'
-import clsx from 'clsx'
+import localFont from 'next/font/local'
+import { twMerge } from 'tailwind-merge'
 
 import '@/styles/tailwind.css'
 import { type Metadata } from 'next'
 
-const inter = Inter({
-  subsets: ['latin'],
+const poppins = localFont({
+  src: [
+    { path: 'fonts/poppins/Poppins-Thin.ttf', weight: '100' },
+    { path: 'fonts/poppins/Poppins-Light.ttf', weight: '300' },
+    { path: 'fonts/poppins/Poppins-Regular.ttf', weight: '400' },
+    { path: 'fonts/poppins/Poppins-Medium.ttf', weight: '500' },
+    { path: 'fonts/poppins/Poppins-SemiBold.ttf', weight: '600' },
+    { path: 'fonts/poppins/Poppins-Bold.ttf', weight: '700' },
+    {
+      path: 'fonts/poppins/Poppins-ExtraBold.ttf',
+      weight: '800',
+    },
+  ],
   display: 'swap',
-  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Pocket',
-    default: 'Pocket - Invest at the perfect time.',
+    template: '%s - Inxtruc',
+    default: 'Inxtruc - Guiding Families, Step by Step',
   },
 
   description:
-    'By leveraging insights from our network of industry insiders, you’ll know exactly when to buy to maximize profit, and exactly when to sell to avoid painful losses.'
+    'Inxtruc: Create and share step-by-step tutorials within your household. From recipes to repairs, streamline family knowledge sharing with this easy-to-use app. Join the waitlist today!',
 }
 
 export default function RootLayout({
@@ -28,7 +38,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={clsx('h-full bg-gray-50 antialiased', inter.variable)}
+      className={twMerge(
+        'h-full bg-gray-100 antialiased dark:bg-gray-900',
+        poppins.className,
+      )}
     >
       <body className="flex h-full flex-col">
         <div className="flex min-h-full flex-col">{children}</div>
