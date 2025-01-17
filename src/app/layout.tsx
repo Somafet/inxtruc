@@ -21,6 +21,16 @@ const poppins = localFont({
   display: 'swap',
 })
 
+const caveat = localFont({
+  src: [
+    { path: 'fonts/caveat/Caveat-Regular.ttf', weight: '400' },
+    { path: 'fonts/caveat/Caveat-Medium.ttf', weight: '500' },
+    { path: 'fonts/caveat/Caveat-SemiBold.ttf', weight: '600' },
+    { path: 'fonts/caveat/Caveat-Bold.ttf', weight: '700' },
+  ],
+  display: 'swap',
+})
+
 export const keywords = [
   'Family tutorial app',
   'Home-made guides platform',

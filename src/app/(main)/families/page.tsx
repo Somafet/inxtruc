@@ -141,6 +141,14 @@ export const metadata: Metadata = {
   title: 'Guiding Families, Step by Step',
   description:
     'Inxtruc is designed to help families create, organize, and share homemade tutorials for everyday tasks.',
+  keywords: [
+    'families',
+    'guides',
+    'tutorials',
+    'household',
+    'tasks',
+    'inxtruc families',
+  ],
 }
 
 export default function FamiliesLanding() {

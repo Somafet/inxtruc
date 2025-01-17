@@ -147,7 +147,16 @@ const faqs = [
 export const metadata: Metadata = {
   title: 'Guiding Booking.com guests, Step by Step',
   description:
-    'Empower Your Hosting with Inxtruc – Streamline Guest Experiences Effortlessly!',
+    'Empower Your Booking.com Hosting with Inxtruc – Streamline Guest Experiences Effortlessly!',
+  keywords: [
+    'inxtruc booking',
+    'inxtruc booking.com',
+    'booking.com',
+    'booking.com hosting',
+    'booking.com guides',
+    'property',
+    'management',
+  ],
 }
 
 export default function BookingComLanding() {

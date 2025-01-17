@@ -148,7 +148,16 @@ const faqs = [
 export const metadata: Metadata = {
   title: 'Guiding Airbnb guests, Step by Step',
   description:
-    'Empower Your Hosting with Inxtruc – Streamline Guest Experiences Effortlessly!',
+    'Empower Your Airbnb Hosting with Inxtruc – Streamline Guest Experiences Effortlessly!',
+  keywords: [
+    'inxtruc airbnb',
+    'airbnb',
+    'hosting',
+    'guides',
+    'guests',
+    'property',
+    'management',
+  ],
 }
 
 export default function AirbnbLanding() {

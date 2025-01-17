@@ -14,6 +14,7 @@ import { twMerge } from 'tailwind-merge'
 import { Link } from './ui/link'
 import { GuideCategory } from '@/types/Guide'
 import { Button } from './ui/button'
+import TryMeIcon from './svg/TryMe'
 
 type AppDemoProps = {
   subtitle: string
@@ -23,7 +24,8 @@ type AppDemoProps = {
 export function AppDemo({ subtitle, guideCategories }: AppDemoProps) {
   const contentRef = useRef<HTMLDivElement>(null)
   return (
-    <AppScreen>
+    <AppScreen className="relative">
+      <TryMeIcon className="absolute left-[5%] top-[23%] z-50 h-10 w-auto text-gray-900 dark:text-gray-100" />
       <AppScreen.Body>
         <div className="p-4">
           <div className="flex gap-2">

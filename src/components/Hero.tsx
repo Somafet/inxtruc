@@ -9,6 +9,11 @@ import JoinWaitlist from './JoinWaitlist'
 import { toOrdinal } from '@/utils/utils'
 import { GuideCategory } from '@/types/Guide'
 import { redisClient } from '@/lib/redis/redis.service'
+import { twMerge } from 'tailwind-merge'
+import { Link } from './ui/link'
+import AirbnbIcon from './svg/AirbnbIcon'
+import BookingIcon from './svg/BookingIcon'
+import { UsersRoundIcon } from 'lucide-react'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   let id = useId()
@@ -86,6 +91,34 @@ type HeroProps = {
   demoTitle: string
 }
 
+type Usecase = [ReactNode, string, string?]
+
+const usecases: Usecase[] = [
+  [
+    <>
+      <AirbnbIcon className="h-8 w-8 fill-[#FF5A5F]" />{' '}
+      <Text className="text-lg font-bold text-[#FF5A5F] sm:text-lg dark:text-[#FF5A5F]">
+        airbnb
+      </Text>
+    </>,
+    '/airbnb',
+  ],
+  [
+    <>
+      <BookingIcon className="h-8 w-auto" />
+    </>,
+    '/booking',
+  ],
+  [
+    <>
+      <UsersRoundIcon className="dark:text-white" />{' '}
+      <Text className="text-lg font-semibold sm:text-lg">Families</Text>
+    </>,
+    '/families',
+  ],
+  // ['CNN', logoCnn, 'hidden xl:block'],
+]
+
 export async function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
   const count = await redisClient.get('waitlistCount')
 
@@ -126,8 +159,24 @@ export async function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
             </div>
           </div>
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
-            {/* There was a section here. For now this is just a placeholder */}
-            <div className="min-h-0 sm:min-h-40" />
+            <Text className="text-center text-sm font-semibold sm:text-sm lg:text-left">
+              Check out our other use cases
+            </Text>
+            <ul
+              role="list"
+              className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start"
+            >
+              {usecases.map(([element, href, className]) => (
+                <li key={href} className={twMerge('flex', className)}>
+                  <Link href={href} className="flex items-center gap-2">
+                    {element}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Text className="mt-4 text-center text-sm font-semibold sm:text-sm lg:text-left">
+              And much-much more!
+            </Text>
           </div>
         </div>
       </Container>
