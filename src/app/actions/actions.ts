@@ -23,23 +23,34 @@ export async function applyToWaitlist(
   const countParsed = Number(countValue?.valueOf())
   const count = isNaN(countParsed) ? 0 : countParsed
 
-  const response = await resend.emails.send({
-    from: 'Inxtruc <info@inxtruc.com>',
-    to: [email],
-    subject: `Welcome to Inxtruc!`,
-    react: WelcomeEmail({ count: count + 1 }),
-    headers: {
-      'X-Entity-Ref-ID': generateEmailId(),
-    },
-  })
+  const [emailResponse, contactResponse] = await Promise.all([
+    resend.contacts.create({
+      email,
+      unsubscribed: false,
+      audienceId: '34aa14bc-eb3a-4c26-bde3-6da0a2a6e523',
+    }),
+    resend.emails.send({
+      from: 'Inxtruc <info@inxtruc.com>',
+      to: [email],
+      subject: `Welcome to Inxtruc!`,
+      react: WelcomeEmail({ count: count + 1 }),
+      headers: {
+        'X-Entity-Ref-ID': generateEmailId(),
+      },
+    }),
+  ])
 
-  if (response.error) {
-    console.error('failed_to_send_welcome_email', response.error)
+  if (emailResponse.error) {
+    console.error('failed_to_send_welcome_email', emailResponse.error)
 
     return {
       ...prevState,
       error: "We couldn't send the email. Please try again.",
     }
+  }
+
+  if (contactResponse.error) {
+    console.warn('failed_to_create_contact', contactResponse.error)
   }
 
   await redisClient.set('waitlistCount', count + 1)
