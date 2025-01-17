@@ -151,6 +151,8 @@ export const metadata: Metadata = {
     'Empower Your Airbnb Hosting with Inxtruc – Streamline Guest Experiences Effortlessly!',
   keywords: [
     'inxtruc airbnb',
+    'airbnb welcome guide',
+    'airbnb step-by-step guides',
     'airbnb',
     'hosting',
     'guides',

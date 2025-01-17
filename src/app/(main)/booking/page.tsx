@@ -151,6 +151,10 @@ export const metadata: Metadata = {
   keywords: [
     'inxtruc booking',
     'inxtruc booking.com',
+    'booking welcome guide',
+    'booking.com welcome guide',
+    'booking.com step-by-step guides',
+    'booking step-by-step guides',
     'booking.com',
     'booking.com hosting',
     'booking.com guides',
