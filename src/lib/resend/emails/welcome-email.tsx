@@ -58,7 +58,13 @@ export const WelcomeEmail = ({
         <Body className={twMerge('bg-offwhite font-sans text-base')}>
           <Container className="p-45 bg-white">
             <div className="mx-auto text-center">
-              <Img src={`${baseUrl}/logo.png`} alt="Inxtruc logo" />
+              <Img
+                src={`https://inxtruc.imgix.net/logo.png`}
+                alt="Inxtruc logo"
+                className="mx-auto mb-8"
+                width={64}
+                height={64}
+              />
             </div>
             <Heading className="my-0 text-center leading-8">
               Welcome to Inxtruc!
