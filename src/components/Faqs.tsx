@@ -2,61 +2,14 @@ import { Container } from '@/components/Container'
 import { Heading } from './ui/heading'
 import { Text, TextLink } from './ui/text'
 
-const faqs = [
-  [
-    {
-      question: 'What is Inxtruc, and how does it work?',
-      answer:
-        'Inxtruc is an app that lets families create, organize, and share home-made tutorials for everyday tasks. You can build step-by-step guides with text, images, and videos, accessible anytime, anywhere.',
-    },
-    {
-      question: 'Who is Inxtruc for?',
-      answer:
-        'Inxtruc is designed for families, couples, or households looking to preserve knowledge, teach new skills, or share instructions on recurring tasks.',
-    },
-    {
-      question: 'Can I access my guides offline?',
-      answer:
-        'Yes, Inxtruc allows you to download guides for offline access so you can view them even without an internet connection.',
-    },
-  ],
-  [
-    {
-      question: 'Is my data secure?',
-      answer:
-        'Absolutely. All guides are encrypted and stored securely in the cloud. Only you and your family have access to them unless you choose to share guides with the community.',
-    },
-    {
-      question: 'What can I include in a guide?',
-      answer:
-        'You can include text instructions, audio recordings, photos, videos, and custom tags to make your guides detailed and personalized.',
-    },
-    {
-      question: 'How many guides can I create?',
-      answer:
-        'The number of guides depends on your subscription plan. The free tier includes a limited number, while premium plans offer unlimited guide creation.',
-    },
-  ],
-  [
-    {
-      question: 'Can I share my guides with others?',
-      answer:
-        'Yes, you can share guides within your household or, in the future, with the wider Inxtruc community. Community sharing is on our roadmap and will allow families to exchange knowledge freely.',
-    },
-    {
-      question: 'What devices is Inxtruc available on?',
-      answer:
-        'Inxtruc is available on iOS, Android devices and it is on our roadmap to include web ensuring you can use it on any platform you prefer.',
-    },
-    {
-      question: 'How much does Inxtruc cost?',
-      answer:
-        'Inxtruc offers a free tier with limited features and paid plans for those who need additional storage, family profiles, and more. Pricing details will be revealed when we are closer to launch. Rest assured, all early adopters will receive a special discount.',
-    },
-  ],
-]
+type FaqsProps = {
+  faqs: {
+    question: string
+    answer: string
+  }[][]
+}
 
-export function Faqs() {
+export function Faqs({ faqs }: FaqsProps) {
   return (
     <section
       id="faqs"

@@ -3,12 +3,11 @@ import { useId } from 'react'
 import { AppDemo } from '@/components/AppDemo'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
-import { Button } from '@/components/ui/button'
-import { Input } from './ui/input'
 import { Heading } from './ui/heading'
 import { Text } from './ui/text'
 import JoinWaitlist from './JoinWaitlist'
 import { toOrdinal } from '@/utils/utils'
+import { GuideCategory } from '@/types/Guide'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   let id = useId()
@@ -79,7 +78,14 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   )
 }
 
-export function Hero() {
+type HeroProps = {
+  title: string
+  subtitle: string
+  guides: GuideCategory[]
+  demoTitle: string
+}
+
+export function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
   const numberInLine = 1
 
   const numberInLineText =
@@ -94,12 +100,9 @@ export function Hero() {
               Inxtruc
             </Text>
             <Heading level={1} className="text-4xl tracking-tight sm:text-4xl">
-              Guiding Families, Step by Step
+              {title}, Step by Step
             </Heading>
-            <Text className="mt-6 text-lg sm:text-xl">
-              A simple app to create and share home-made tutorials within your
-              household.
-            </Text>
+            <Text className="mt-6 text-lg sm:text-xl">{subtitle}</Text>
             <div className="mt-8 space-y-2">
               <Text className="mt-6 text-sm sm:text-sm">
                 Be the {numberInLineText} to try Inxtruc! Join our waitlist
@@ -114,7 +117,7 @@ export function Hero() {
             <BackgroundIllustration className="absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
             <div className="-mx-4 h-[448px] px-9 [mask-image:linear-gradient(to_bottom,white_60%,transparent)] sm:mx-0 lg:absolute lg:-inset-x-10 lg:-bottom-20 lg:-top-10 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
               <PhoneFrame className="mx-auto max-w-[366px]" priority>
-                <AppDemo />
+                <AppDemo guideCategories={guides} subtitle={demoTitle} />
               </PhoneFrame>
             </div>
           </div>

@@ -39,11 +39,11 @@ export const keywords = [
 export const metadata: Metadata = {
   title: {
     template: '%s - Inxtruc',
-    default: 'Inxtruc - Guiding Families, Step by Step',
+    default: 'Inxtruc - Guiding, Step by Step',
   },
   keywords,
   description:
-    'Inxtruc: Create and share step-by-step tutorials within your household. From recipes to repairs, streamline family knowledge sharing with this easy-to-use app. Join the waitlist today!',
+    'Inxtruc is designed to help anyone create, organize, and share step-by-step tutorials for everyday tasks. Join the waitlist today!',
 }
 
 export default function RootLayout({
