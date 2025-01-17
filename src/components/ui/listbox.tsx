@@ -45,7 +45,7 @@ export function Listbox<T>({
           options={options}
           placeholder={
             placeholder && (
-              <span className="block truncate text-zinc-500">
+              <span className="block truncate text-zinc-600">
                 {placeholder}
               </span>
             )
@@ -58,7 +58,7 @@ export function Listbox<T>({
             // Horizontal padding
             'pl-[calc(theme(spacing[3.5])-1px)] pr-[calc(theme(spacing.7)-1px)] sm:pl-[calc(theme(spacing.3)-1px)]',
             // Typography
-            'text-left text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white forced-colors:text-[CanvasText]',
+            'text-left text-base/6 text-zinc-950 placeholder:text-zinc-600 sm:text-sm/6 dark:text-white forced-colors:text-[CanvasText]',
             // Border
             'border border-zinc-950/10 group-data-[active]:border-zinc-950/20 group-data-[hover]:border-zinc-950/20 dark:border-white/10 dark:group-data-[active]:border-white/20 dark:group-data-[hover]:border-white/20',
             // Background color
@@ -130,7 +130,7 @@ export function ListboxOption<T>({
     'flex min-w-0 items-center',
     // Icons
     '[&>[data-slot=icon]]:size-5 [&>[data-slot=icon]]:shrink-0 sm:[&>[data-slot=icon]]:size-4',
-    '[&>[data-slot=icon]]:text-zinc-500 [&>[data-slot=icon]]:group-data-[focus]/option:text-white [&>[data-slot=icon]]:dark:text-zinc-400',
+    '[&>[data-slot=icon]]:text-zinc-600 [&>[data-slot=icon]]:group-data-[focus]/option:text-white [&>[data-slot=icon]]:dark:text-zinc-400',
     'forced-colors:[&>[data-slot=icon]]:text-[CanvasText] forced-colors:[&>[data-slot=icon]]:group-data-[focus]/option:text-[Canvas]',
     // Avatars
     '[&>[data-slot=avatar]]:-mx-0.5 [&>[data-slot=avatar]]:size-6 sm:[&>[data-slot=avatar]]:size-5',
@@ -208,7 +208,7 @@ export function ListboxDescription({
       {...props}
       className={twMerge(
         className,
-        'flex flex-1 overflow-hidden text-zinc-500 before:w-2 before:min-w-0 before:shrink group-data-[focus]/option:text-white dark:text-zinc-400',
+        'flex flex-1 overflow-hidden text-zinc-600 before:w-2 before:min-w-0 before:shrink group-data-[focus]/option:text-white dark:text-zinc-400',
       )}
     >
       <span className="flex-1 truncate">{children}</span>

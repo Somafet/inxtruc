@@ -10,7 +10,7 @@ export function Text({
       data-slot="text"
       {...props}
       className={twMerge(
-        'text-base/6 text-zinc-500 sm:text-sm/6 dark:text-zinc-400',
+        'text-base/6 text-zinc-600 sm:text-sm/6 dark:text-zinc-400',
         className,
       )}
     />
