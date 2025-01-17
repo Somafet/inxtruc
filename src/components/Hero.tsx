@@ -8,6 +8,7 @@ import { Input } from './ui/input'
 import { Heading } from './ui/heading'
 import { Text } from './ui/text'
 import JoinWaitlist from './JoinWaitlist'
+import { toOrdinal } from '@/utils/utils'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   let id = useId()
