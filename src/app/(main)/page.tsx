@@ -22,9 +22,7 @@ import DeviceUserIcon from '@/components/svg/DeviceUserIcon'
 import { Metadata } from 'next/types'
 import { homeFeatures } from '@/components/sub-landing/HomeFeatures'
 
-// Next.js will invalidate the cache when a
-// request comes in, at most once every 60 seconds.
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
 
 const appDemoGuides: GuideCategory[] = [
   {
