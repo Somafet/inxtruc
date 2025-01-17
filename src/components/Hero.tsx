@@ -8,6 +8,7 @@ import { Text } from './ui/text'
 import JoinWaitlist from './JoinWaitlist'
 import { toOrdinal } from '@/utils/utils'
 import { GuideCategory } from '@/types/Guide'
+import { redisClient } from '@/lib/redis/redis.service'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   let id = useId()
@@ -85,11 +86,14 @@ type HeroProps = {
   demoTitle: string
 }
 
-export function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
-  const numberInLine = 1
+export async function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
+  const count = await redisClient.get('waitlistCount')
+
+  const countParsed = Number(count?.valueOf())
+  const countNumber = isNaN(countParsed) ? 0 : countParsed
 
   const numberInLineText =
-    numberInLine === 1 ? 'first' : toOrdinal(numberInLine)
+    countNumber === 0 ? 'first' : toOrdinal(countNumber + 1)
 
   return (
     <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">

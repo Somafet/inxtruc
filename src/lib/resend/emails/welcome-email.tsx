@@ -1,7 +1,5 @@
-import { Logomark } from '@/components/Logo'
 import {
   Body,
-  Button,
   Column,
   Container,
   Head,
@@ -19,12 +17,12 @@ import * as React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface WelcomeEmailProps {
+  count: number
   links?: { name: string; href: string }[]
 }
 
-const baseUrl = 'https://inxtruc.com'
-
 const PropDefaults: WelcomeEmailProps = {
+  count: 55,
   links: [
     { name: 'Visit Inxtruc', href: 'https://inxtruc.com' },
     { name: 'Join our Discord', href: 'https://discord.gg/ATVcrbnpMY' },
@@ -32,6 +30,7 @@ const PropDefaults: WelcomeEmailProps = {
 }
 
 export const WelcomeEmail = ({
+  count = PropDefaults.count,
   links = PropDefaults.links,
 }: WelcomeEmailProps) => {
   return (
@@ -69,6 +68,10 @@ export const WelcomeEmail = ({
             <Heading className="my-0 text-center leading-8">
               Welcome to Inxtruc!
             </Heading>
+
+            <Text className="my-[16px] text-center text-[18px] font-semibold leading-[28px] text-teal-600">
+              You are #{count} on the waitlist!
+            </Text>
 
             <Section>
               <Row>

@@ -1,5 +1,6 @@
 'use server'
 
+import { redisClient } from '@/lib/redis/redis.service'
 import WelcomeEmail from '@/lib/resend/emails/welcome-email'
 import { generateEmailId, resend } from '@/lib/resend/resend.service'
 
@@ -18,11 +19,15 @@ export async function applyToWaitlist(
     return { ...prevState, error: 'Please enter an email address' }
   }
 
+  const countValue = await redisClient.get('waitlistCount')
+  const countParsed = Number(countValue?.valueOf())
+  const count = isNaN(countParsed) ? 0 : countParsed
+
   const response = await resend.emails.send({
     from: 'Inxtruc <info@inxtruc.com>',
     to: [email],
     subject: `Welcome to Inxtruc!`,
-    react: WelcomeEmail({}),
+    react: WelcomeEmail({ count: count + 1 }),
     headers: {
       'X-Entity-Ref-ID': generateEmailId(),
     },
@@ -36,6 +41,8 @@ export async function applyToWaitlist(
       error: "We couldn't send the email. Please try again.",
     }
   }
+
+  await redisClient.set('waitlistCount', count + 1)
 
   return { email, error: null }
 }
