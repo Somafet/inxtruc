@@ -46,7 +46,7 @@ export default function GuidesList({
         <AppScreen.Subtitle>{subtitle}</AppScreen.Subtitle>
       </MotionAppScreenHeader>
       <MotionAppScreenBody
-        className="px-4 py-6"
+        className="max-h-[567px] overflow-y-auto px-4 py-6"
         {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
       >
         <div className="grid grid-cols-1 gap-4">

@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { ReactNode, useId } from 'react'
 
 import { AppDemo } from '@/components/AppDemo'
 import { Container } from '@/components/Container'
@@ -80,8 +80,8 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
 }
 
 type HeroProps = {
-  title: string
-  subtitle: string
+  title: ReactNode
+  subtitle: ReactNode
   guides: GuideCategory[]
   demoTitle: string
 }
@@ -104,7 +104,7 @@ export async function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
               Inxtruc
             </Text>
             <Heading level={1} className="text-4xl tracking-tight sm:text-4xl">
-              {title}, Step by Step
+              <span className="text-nowrap">{title},</span> Step by Step
             </Heading>
             <Text className="mt-6 text-lg sm:text-xl">{subtitle}</Text>
             <div className="mt-8 space-y-2">
