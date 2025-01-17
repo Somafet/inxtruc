@@ -19,6 +19,10 @@ export async function applyToWaitlist(
     return { ...prevState, error: 'Please enter an email address' }
   }
 
+  if (email === prevState.email) {
+    return { ...prevState, error: null }
+  }
+
   const countValue = await redisClient.get('waitlistCount')
   const countParsed = Number(countValue?.valueOf())
   const count = isNaN(countParsed) ? 0 : countParsed
