@@ -41,6 +41,18 @@ const styles = {
     // Disabled
     'before:data-[disabled]:shadow-none after:data-[disabled]:shadow-none',
   ],
+  small: [
+    // Base
+    'relative isolate inline-flex items-center justify-center gap-x-2 rounded-lg border text-sm/6 font-semibold',
+    // Sizing
+    'px-[calc(theme(spacing[2])-1px)] py-[calc(theme(spacing[1.5])-1px)] sm:px-[calc(theme(spacing[1.5])-1px)] sm:py-[calc(theme(spacing[1])-1px)] sm:text-xs/6',
+    // Focus
+    'focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-blue-500',
+    // Disabled
+    'data-[disabled]:opacity-50',
+    // Icon
+    '[&>[data-slot=icon]]:-mx-0.5 [&>[data-slot=icon]]:my-0.5 [&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:shrink-0 [&>[data-slot=icon]]:text-[--btn-icon] [&>[data-slot=icon]]:sm:my-0.5 [&>[data-slot=icon]]:sm:size-3 forced-colors:[--btn-icon:ButtonText] forced-colors:data-[hover]:[--btn-icon:ButtonText]',
+  ],
   outline: [
     // Base
     'border-zinc-950/10 text-zinc-950 data-[active]:bg-zinc-950/[2.5%] data-[hover]:bg-zinc-950/[2.5%]',
@@ -168,6 +180,7 @@ type ButtonProps = (
   children: React.ReactNode
   loading?: boolean
   loadingShowContent?: boolean
+  size?: 'base' | 'small'
 } & (
     | Omit<Headless.ButtonProps, 'as' | 'className'>
     | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'className'>
@@ -182,6 +195,7 @@ export const Button = forwardRef(function Button(
     children,
     loading,
     loadingShowContent,
+    size = 'base',
     ...props
   }: ButtonProps,
   ref: React.ForwardedRef<HTMLElement>,
@@ -193,6 +207,7 @@ export const Button = forwardRef(function Button(
       : plain
       ? styles.plain
       : twMerge(styles.solid, styles.colors[color ?? 'dark/zinc']),
+    styles[size],
     className,
   )
 

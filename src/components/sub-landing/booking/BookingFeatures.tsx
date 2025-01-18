@@ -53,7 +53,7 @@ export const bookingFeatures: Feature[] = [
                 name: 'Access the Building',
                 description:
                   'Learn how to access the property in a few simple steps.',
-                steps: 2,
+                stepsNumber: 2,
                 icon: <HouseIcon />,
                 bgClass: 'bg-[#003b95]',
               },
@@ -61,7 +61,7 @@ export const bookingFeatures: Feature[] = [
                 name: 'Aparment Access',
                 description:
                   'Learn how to access the apartment in a few simple steps.',
-                steps: 2,
+                stepsNumber: 2,
                 icon: <BuildingIcon />,
                 bgClass: 'bg-pink-600',
               },
@@ -74,7 +74,7 @@ export const bookingFeatures: Feature[] = [
                 name: 'Sauna',
                 description:
                   'Learn how to use the sauna in a few simple steps.',
-                steps: 4,
+                stepsNumber: 4,
                 icon: <FlameIcon />,
                 bgClass: 'bg-gray-600',
               },
@@ -82,7 +82,7 @@ export const bookingFeatures: Feature[] = [
                 name: 'Jacuzzi',
                 description:
                   'Learn how to use the jacuzzi in a few simple steps.',
-                steps: 2,
+                stepsNumber: 2,
                 icon: <WavesLadder />,
                 bgClass: 'bg-blue-600',
               },
@@ -95,7 +95,7 @@ export const bookingFeatures: Feature[] = [
                 name: 'Restaurants',
                 description:
                   'Find the best local restaurants in a few simple steps.',
-                steps: 1,
+                stepsNumber: 1,
                 icon: <UtensilsIcon />,
                 bgClass: 'bg-teal-600',
               },
@@ -103,7 +103,7 @@ export const bookingFeatures: Feature[] = [
                 name: 'Nightlife',
                 description:
                   'Find the best local nightlife in a few simple steps.',
-                steps: 1,
+                stepsNumber: 1,
                 icon: <MartiniIcon />,
                 bgClass: 'bg-pink-600',
               },

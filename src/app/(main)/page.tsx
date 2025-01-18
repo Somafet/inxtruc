@@ -21,6 +21,10 @@ import DeviceLockIcon from '@/components/svg/DeviceLockIcon'
 import DeviceUserIcon from '@/components/svg/DeviceUserIcon'
 import { Metadata } from 'next/types'
 import { homeFeatures } from '@/components/sub-landing/HomeFeatures'
+import { Text } from '@/components/ui/text'
+import iphoneMail from '@/images/guides/iphone_mail.jpg'
+import officePrinter from '@/images/guides/office_printer.jpg'
+import Image from 'next/image'
 
 export const dynamic = 'force-dynamic'
 
@@ -29,27 +33,93 @@ const appDemoGuides: GuideCategory[] = [
     name: 'Workplace Essentials',
     guides: [
       {
+        id: 'email',
         name: 'Company email setup',
         description:
           'Step-by-step guide to configure your work email on any device.',
-        steps: 4,
+        stepsNumber: 4,
         icon: <AtSignIcon />,
         bgClass: 'bg-pink-600',
+        steps: [
+          {
+            name: 'Open your email app',
+            content: (
+              <div>
+                <Text className="mb-4">
+                  Open the email application on your device. This could be
+                  Outlook, Gmail, or any other email client you use for work.
+                </Text>
+                <Image
+                  src={iphoneMail.src}
+                  placeholder="blur"
+                  blurDataURL={iphoneMail.blurDataURL}
+                  alt="iPhone mail app icon"
+                  width={800}
+                  height={600}
+                  className="rounded-lg"
+                />
+              </div>
+            ),
+          },
+          {
+            name: 'Enter your email address',
+            content: (
+              <Text>
+                Enter your company email address in the email field provided.
+              </Text>
+            ),
+          },
+        ],
       },
       {
         name: 'Use a shared printer',
         description: 'Learn how to connect to and use a shared office printer.',
-        steps: 5,
+        stepsNumber: 5,
         icon: <PrinterIcon />,
         bgClass: 'bg-blue-600',
+        steps: [
+          {
+            name: 'Connect to the printer',
+            content: (
+              <div className="mb-4">
+                <Text>
+                  Ensure your device is connected to the same network as the
+                  printer. Open the settings on your device, navigate to the
+                  printers section, and select the shared printer from the list.
+                </Text>
+                <Image
+                  src={officePrinter.src}
+                  placeholder="blur"
+                  blurDataURL={officePrinter.blurDataURL}
+                  alt="An office printer"
+                  width={800}
+                  height={600}
+                  className="rounded-lg"
+                />
+              </div>
+            ),
+          },
+        ],
       },
       {
+        id: 'meeting',
         name: 'Organize a meeting',
         description:
           'Plan and execute effective team meetings with this guide.',
-        steps: 6,
+        stepsNumber: 6,
         icon: <PresentationIcon />,
         bgClass: 'bg-green-600',
+        steps: [
+          {
+            name: 'Define the agenda',
+            content: (
+              <Text>
+                Outline the main objectives and topics to discuss during the
+                meeting to keep everyone focused.
+              </Text>
+            ),
+          },
+        ],
       },
     ],
   },
@@ -60,17 +130,40 @@ const appDemoGuides: GuideCategory[] = [
         name: 'Connect to Wi-Fi',
         description:
           'Learn how to connect to any Wi-Fi network in just a few steps.',
-        steps: 3,
+        stepsNumber: 3,
         icon: <WifiIcon />,
         bgClass: 'bg-teal-600',
+        steps: [
+          {
+            name: 'Open Wi-Fi settings',
+            content: (
+              <Text>
+                Open the Wi-Fi settings on your device. This can usually be done
+                through the settings menu or the quick settings panel.
+              </Text>
+            ),
+          },
+        ],
       },
       {
         name: 'Set up a new smartphone',
         description:
           'Get your new smartphone ready to use with this quick setup guide.',
-        steps: 5,
+        stepsNumber: 5,
         icon: <SmartphoneIcon />,
         bgClass: 'bg-yellow-600',
+        steps: [
+          {
+            name: 'Power on your device',
+            content: (
+              <Text>
+                Press and hold the power button on your device until the screen
+                lights up. Follow the on-screen instructions to complete the
+                setup process.
+              </Text>
+            ),
+          },
+        ],
       },
     ],
   },

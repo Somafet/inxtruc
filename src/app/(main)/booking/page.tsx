@@ -14,6 +14,10 @@ import DeviceLockIcon from '@/components/svg/DeviceLockIcon'
 import DeviceUserIcon from '@/components/svg/DeviceUserIcon'
 import { Metadata } from 'next/types'
 import { bookingFeatures } from '@/components/sub-landing/booking/BookingFeatures'
+import { Text } from '@/components/ui/text'
+import Image from 'next/image'
+import entranceDoorImage from '@/images/guides/entrance_door.jpg'
+import saunaRocks from '@/images/guides/sauna_rocks.jpg'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,16 +28,49 @@ const appDemoGuides: GuideCategory[] = [
       {
         name: 'Access the Building',
         description: 'Learn how to access the property in a few simple steps.',
-        steps: 2,
+        stepsNumber: 2,
         icon: <HouseIcon />,
         bgClass: 'bg-[#003b95]',
+        steps: [
+          {
+            name: 'Find the entrance',
+            content: (
+              <div>
+                <Text className="mb-4">
+                  The entrance to the building is located on the left side of
+                  the street.
+                </Text>
+                <Image
+                  src={entranceDoorImage.src}
+                  placeholder="blur"
+                  blurDataURL={entranceDoorImage.blurDataURL}
+                  alt="Entrance door"
+                  width={800}
+                  height={600}
+                  className="rounded-lg"
+                />
+              </div>
+            ),
+          },
+        ],
       },
       {
         name: 'Aparment Access',
         description: 'Learn how to access the apartment in a few simple steps.',
-        steps: 2,
+        stepsNumber: 2,
         icon: <BuildingIcon />,
         bgClass: 'bg-pink-600',
+        steps: [
+          {
+            name: 'Find the key',
+            content: (
+              <Text>
+                The key to the apartment is located in the lockbox near the
+                entrance.
+              </Text>
+            ),
+          },
+        ],
       },
     ],
   },
@@ -43,9 +80,30 @@ const appDemoGuides: GuideCategory[] = [
       {
         name: 'Sauna',
         description: 'Learn how to use the sauna in a few simple steps.',
-        steps: 4,
+        stepsNumber: 4,
         icon: <FlameIcon />,
         bgClass: 'bg-gray-600',
+        steps: [
+          {
+            name: 'Turn on the sauna',
+            content: (
+              <div>
+                <Text>
+                  The sauna can be turned on by pressing the button on the wall.
+                </Text>
+                <Image
+                  src={saunaRocks.src}
+                  placeholder="blur"
+                  blurDataURL={saunaRocks.blurDataURL}
+                  alt="Sauna rocks"
+                  width={800}
+                  height={600}
+                  className="rounded-lg"
+                />
+              </div>
+            ),
+          },
+        ],
       },
     ],
   },

@@ -51,7 +51,7 @@ export const homeFeatures: Feature[] = [
                 name: 'Company email setup',
                 description:
                   'Step-by-step guide to configure your work email on any device.',
-                steps: 4,
+                stepsNumber: 4,
                 icon: <AtSignIcon />,
                 bgClass: 'bg-pink-600',
               },
@@ -59,7 +59,7 @@ export const homeFeatures: Feature[] = [
                 name: 'Use a shared printer',
                 description:
                   'Learn how to connect to and use a shared office printer.',
-                steps: 5,
+                stepsNumber: 5,
                 icon: <PrinterIcon />,
                 bgClass: 'bg-blue-600',
               },
@@ -67,7 +67,7 @@ export const homeFeatures: Feature[] = [
                 name: 'Organize a meeting',
                 description:
                   'Plan and execute effective team meetings with this guide.',
-                steps: 6,
+                stepsNumber: 6,
                 icon: <PresentationIcon />,
                 bgClass: 'bg-green-600',
               },
@@ -80,7 +80,7 @@ export const homeFeatures: Feature[] = [
                 name: 'Connect to Wi-Fi',
                 description:
                   'Learn how to connect to any Wi-Fi network in just a few steps.',
-                steps: 3,
+                stepsNumber: 3,
                 icon: <WifiIcon />,
                 bgClass: 'bg-teal-600',
               },
@@ -88,7 +88,7 @@ export const homeFeatures: Feature[] = [
                 name: 'Set up a new smartphone',
                 description:
                   'Get your new smartphone ready to use with this quick setup guide.',
-                steps: 5,
+                stepsNumber: 5,
                 icon: <SmartphoneIcon />,
                 bgClass: 'bg-yellow-600',
               },

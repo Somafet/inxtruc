@@ -113,7 +113,7 @@ export default function GuidesList({
                                 >
                                   {guide.name}
                                 </Link>
-                                <Text>{guide.steps} Steps</Text>
+                                <Text>{guide.stepsNumber} Steps</Text>
                               </div>
                               <div className="shrink-0 pr-2">
                                 <ChevronRight className="h-5 w-5 text-gray-400" />

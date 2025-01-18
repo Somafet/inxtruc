@@ -49,13 +49,13 @@ export const familyFeatures: Feature[] = [
               {
                 icon: <WifiIcon />,
                 name: 'Connect to Wi-Fi',
-                steps: 3,
+                stepsNumber: 3,
                 bgClass: 'bg-pink-600',
               },
               {
                 icon: <PrinterIcon />,
                 name: 'Print a document',
-                steps: 8,
+                stepsNumber: 8,
                 bgClass: 'bg-blue-600',
               },
               {
@@ -71,7 +71,7 @@ export const familyFeatures: Feature[] = [
                   </svg>
                 ),
                 name: 'Youtube on TV',
-                steps: 4,
+                stepsNumber: 4,
                 bgClass: 'bg-white',
               },
             ],
@@ -81,7 +81,7 @@ export const familyFeatures: Feature[] = [
             guides: [
               {
                 name: 'Run a laundry cycle',
-                steps: 5,
+                stepsNumber: 5,
                 icon: <WashingMachineIcon />,
                 bgClass: 'bg-green-600',
               },
@@ -92,7 +92,7 @@ export const familyFeatures: Feature[] = [
             guides: [
               {
                 name: 'Perfectly Fluffy Pancakes',
-                steps: 6,
+                stepsNumber: 6,
                 icon: <CookingPotIcon />,
                 bgClass: 'bg-blue-600',
               },

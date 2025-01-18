@@ -88,7 +88,7 @@ AppScreen.Body = forwardRef<
     <div
       ref={ref}
       className={twMerge(
-        'mt-6 flex-auto rounded-t-2xl bg-white dark:bg-gray-800',
+        'mt-6 max-h-[480px] flex-auto overflow-y-auto rounded-t-2xl bg-white dark:bg-gray-800',
         className,
       )}
     >

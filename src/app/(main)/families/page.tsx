@@ -14,6 +14,11 @@ import DeviceListIcon from '@/components/svg/DeviceListIcon'
 import DeviceLockIcon from '@/components/svg/DeviceLockIcon'
 import DeviceUserIcon from '@/components/svg/DeviceUserIcon'
 import { Metadata } from 'next/types'
+import Image from 'next/image'
+import iphoneSettingsIcon from '@/images/guides/iphone_settings.jpg'
+import laundryLoad from '@/images/guides/laundry_load.jpg'
+import laundryDetergent from '@/images/guides/laundry_detergent.jpg'
+import { Text } from '@/components/ui/text'
 
 export const dynamic = 'force-dynamic'
 
@@ -24,9 +29,42 @@ const appDemoGuides: GuideCategory[] = [
       {
         name: 'Connect to Wi-Fi',
         description: 'Learn how to connect to Wi-Fi in a few simple steps.',
-        steps: 3,
+        stepsNumber: 3,
         icon: <WifiIcon />,
         bgClass: 'bg-pink-600',
+        steps: [
+          {
+            name: 'Open settings',
+            content: (
+              <div>
+                <Text className="mb-4">
+                  Dad, open the iPhone settings app on your phone with this icon
+                </Text>
+                <Image
+                  src={iphoneSettingsIcon.src}
+                  placeholder="blur"
+                  blurDataURL={iphoneSettingsIcon.blurDataURL}
+                  alt="iPhone settings icon on screen"
+                  width={800}
+                  height={600}
+                  className="rounded-lg"
+                />
+              </div>
+            ),
+          },
+          {
+            name: 'Select Wi-Fi settings',
+            content: <Text className="mb-4">Select the Wi-Fi settings.</Text>,
+          },
+          {
+            name: 'Select the network',
+            content: (
+              <Text className="mb-4">
+                Select the ’Dad-Wifi’ network and enter the password.
+              </Text>
+            ),
+          },
+        ],
       },
     ],
   },
@@ -36,9 +74,61 @@ const appDemoGuides: GuideCategory[] = [
       {
         name: 'Run a laundry cycle',
         description: 'Learn how to run a laundry cycle in a few simple steps.',
-        steps: 4,
+        stepsNumber: 4,
         icon: <WashingMachineIcon />,
         bgClass: 'bg-blue-600',
+        steps: [
+          {
+            name: 'Load the laundry',
+            content: (
+              <div>
+                <Text className="mb-4">Load the laundry into the machine.</Text>
+                <Image
+                  src={laundryLoad.src}
+                  placeholder="blur"
+                  blurDataURL={laundryLoad.blurDataURL}
+                  alt="Loading laundry"
+                  width={800}
+                  height={600}
+                  className="rounded-lg"
+                />
+              </div>
+            ),
+          },
+          {
+            name: 'Add detergent',
+            content: (
+              <div>
+                <Text className="mb-4">Add detergent to the machine.</Text>
+                <Image
+                  src={laundryDetergent.src}
+                  placeholder="blur"
+                  blurDataURL={laundryDetergent.blurDataURL}
+                  alt="Adding detergent to laundry"
+                  width={800}
+                  height={600}
+                  className="rounded-lg"
+                />
+              </div>
+            ),
+          },
+          {
+            name: 'Select the cycle',
+            content: (
+              <Text className="mb-4">
+                Select the ’Synthetic’ cycle and press start.
+              </Text>
+            ),
+          },
+          {
+            name: 'Dry the laundry',
+            content: (
+              <Text className="mb-4">
+                Dry the laundry after the cycle is complete.
+              </Text>
+            ),
+          },
+        ],
       },
     ],
   },
