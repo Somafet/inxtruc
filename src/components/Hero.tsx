@@ -14,6 +14,8 @@ import { Link } from './ui/link'
 import AirbnbIcon from './svg/AirbnbIcon'
 import BookingIcon from './svg/BookingIcon'
 import { UsersRoundIcon } from 'lucide-react'
+import Image from 'next/image'
+import brandedTryItArrow from '@/images/branded-try-it.png'
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<'div'>) {
   let id = useId()
@@ -129,7 +131,14 @@ export async function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
     countNumber <= 50 ? 'first' : toOrdinal(countNumber + 1)
 
   return (
-    <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
+    <div className="relative overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
+      <Image
+        src={brandedTryItArrow}
+        alt="try it arrow"
+        width={100}
+        height={100}
+        className="pointer-events-none absolute top-1/2 z-50 transform sm:left-1/4 sm:-translate-x-full sm:-translate-y-full md:top-1/2 lg:left-1/2 lg:translate-x-0"
+      />
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">

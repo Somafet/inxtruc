@@ -14,7 +14,6 @@ import { twMerge } from 'tailwind-merge'
 import { Guide, GuideCategory } from '@/types/Guide'
 import { Button } from './ui/button'
 import AppDemoGuide from './AppDemoGuide'
-import TryMeIcon from './svg/TryMe'
 
 type AppDemoProps = {
   subtitle: string
@@ -75,9 +74,13 @@ export function AppDemo({ subtitle, guideCategories }: AppDemoProps) {
           >
             <AppScreen.Body>
               <div className="p-4">
-                <div className="flex gap-2">
+                <div>
                   <Text className="flex items-baseline gap-2 text-sm font-semibold sm:text-sm">
-                    Ease your life with Inxtructions
+                    👋 Ease your life with Inxtructions
+                  </Text>
+                  <Text>
+                    This is a live Inxtruc guide. Feel free to try it out and
+                    see how it looks and feels. 👀
                   </Text>
                 </div>
                 <div className="mt-3 border-t border-gray-200">
@@ -96,9 +99,6 @@ export function AppDemo({ subtitle, guideCategories }: AppDemoProps) {
                                 )}
                               >
                                 <Text className="relative font-semibold">
-                                  {index === 0 && (
-                                    <TryMeIcon className="absolute -top-8 z-50 h-10 w-auto text-gray-900 dark:text-gray-100" />
-                                  )}
                                   {category.name}
                                 </Text>
                                 <motion.div
