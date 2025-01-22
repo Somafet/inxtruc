@@ -128,7 +128,7 @@ export async function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
   const countNumber = isNaN(countParsed) ? 0 : countParsed
 
   const numberInLineText =
-    countNumber <= 50 ? 'first' : toOrdinal(countNumber + 1)
+    countNumber === 0 ? 'first' : toOrdinal(countNumber + 1)
 
   return (
     <div className="relative overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
