@@ -229,10 +229,15 @@ export default function AirbnbLanding() {
         demoTitle="Your Airbnb’s Knowledge Base"
         title={
           <span className="inline-flex items-center gap-2">
-            Guiding <AirbnbIcon className="h-8 w-8 fill-[#FF5A5F]" /> Guests
+            Guiding{' '}
+            <AirbnbIcon
+              className="h-8 w-8 fill-[#FF5A5F]"
+              aria-label="Airbnb"
+            />{' '}
+            Guests
           </span>
         }
-        subtitle="Craft detailed, easy-to-follow guides for your Airbnb guests. Elevate your hosting game with Inxtruc."
+        subtitle="Inxtruc Airbnb allows you to craft detailed, easy-to-follow guides for your Airbnb guests. Elevate your Airbnb information for guests with Inxtruc."
       />
       <Features
         features={airbnbFeatures}
