@@ -146,7 +146,7 @@ export async function Hero({ title, subtitle, guides, demoTitle }: HeroProps) {
               Inxtruc
             </Text>
             <Heading level={1} className="text-4xl tracking-tight sm:text-4xl">
-              <span className="text-nowrap">{title},</span> Step by Step
+              {title}
             </Heading>
             <Text className="mt-6 text-lg sm:text-xl">{subtitle}</Text>
             <div className="mt-8 space-y-2">

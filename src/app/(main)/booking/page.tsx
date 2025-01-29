@@ -203,10 +203,11 @@ const faqs = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Guiding Booking.com guests, Step by Step',
+  title: 'Create, Organize and Share Step-by-Step Guides for your Guests',
   description:
     'Empower Your Booking.com Hosting with Inxtruc – Streamline Guest Experiences Effortlessly!',
   keywords: [
+    'inxtruc',
     'inxtruc booking',
     'inxtruc booking.com',
     'booking welcome guide',
@@ -229,7 +230,7 @@ export default function BookingComLanding() {
         demoTitle="Your Property’s Knowledge Base"
         title={
           <span className="inline-flex items-center gap-2">
-            Guiding Booking.com Guests
+            Create, Organize and Share Step-by-Step Guides for your Guests
           </span>
         }
         subtitle="Craft detailed, easy-to-follow guides for your Booking.com guests. Elevate your hosting game with Inxtruc."

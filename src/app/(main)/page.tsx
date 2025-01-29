@@ -263,7 +263,7 @@ const faqs = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Your Guide, Step by Step',
+  title: 'Create, Organize and Share Step-by-Step Guides with Ease',
 }
 
 export default function HomePage() {
@@ -272,8 +272,8 @@ export default function HomePage() {
       <Hero
         guides={appDemoGuides}
         demoTitle="Your essential guides"
-        title="Your Guide"
-        subtitle="A simple app to create and share step-by-step tutorials with anyone, anywhere."
+        title="Create, Organize and Share Step-by-Step Guides with Ease"
+        subtitle="Inxtruc simplifies the process of making personalized guides for any task, whether for personal use or professional teams, accessible on any device."
       />
       <Features
         features={homeFeatures}

@@ -9,7 +9,6 @@ import {
 } from '@/app/actions/actions'
 import confetti from 'canvas-confetti'
 
-
 export default function JoinWaitlist() {
   const [isAnimating, setIsAnimating] = useState(false)
   const initialState: WaitlistApplicationState = {
@@ -61,7 +60,7 @@ export default function JoinWaitlist() {
         )}
       </div>
       <Button type="submit" className="h-min flex-none" loading={isPending}>
-        <span className="hidden lg:inline">Join our waitlist</span>
+        <span className="hidden lg:inline">Join Waitlist Now</span>
         <span className="lg:hidden">Join waitlist</span>
       </Button>
     </form>

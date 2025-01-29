@@ -32,6 +32,7 @@ const caveat = localFont({
 })
 
 export const keywords = [
+  'inxtruc',
   'Family tutorial app',
   'Home-made guides platform',
   'Household knowledge sharing',
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
   },
   keywords,
   description:
-    'Inxtruc is designed to help anyone create, organize, and share step-by-step tutorials for everyday tasks. Join the waitlist today!',
+    'Inxtruc simplifies the process of making personalized guides for any task, whether for personal user or professional teams, accessible on any device.',
 }
 
 export default function RootLayout({

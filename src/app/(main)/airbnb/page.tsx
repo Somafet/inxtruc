@@ -204,10 +204,11 @@ const faqs = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Guiding Airbnb guests, Step by Step',
+  title: 'Guiding your Airbnb Guests, Step by Step',
   description:
     'Empower Your Airbnb Hosting with Inxtruc – Streamline Guest Experiences Effortlessly!',
   keywords: [
+    'inxtruc',
     'inxtruc airbnb',
     'airbnb information for guests',
     'airbnb welcome guide',
@@ -228,16 +229,16 @@ export default function AirbnbLanding() {
         guides={appDemoGuides}
         demoTitle="Your Airbnb’s Knowledge Base"
         title={
-          <span className="inline-flex items-center gap-2">
+          <p className="items-center gap-2">
             Guiding{' '}
             <AirbnbIcon
-              className="h-8 w-8 fill-[#FF5A5F]"
+              className="inline-block h-8 w-8 fill-[#FF5A5F]"
               aria-label="Airbnb"
             />{' '}
-            Guests
-          </span>
+            Guests, Step-by-step
+          </p>
         }
-        subtitle="Inxtruc Airbnb allows you to craft detailed, easy-to-follow guides for your Airbnb guests. Elevate your Airbnb information for guests with Inxtruc."
+        subtitle="Inxtruc for Airbnb allows you to craft detailed, easy-to-follow guides for your Airbnb guests. Elevate your Airbnb information for guests with Inxtruc."
       />
       <Features
         features={airbnbFeatures}
