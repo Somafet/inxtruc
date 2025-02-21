@@ -1,10 +1,12 @@
-# Pocket
+# Inxtruc
 
-Pocket is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+Inxtruc is a Waitlist landing site built using [Tailwind CSS](https://tailwindcss.com), [Next.js](https://nextjs.org) and deployed on [Vercel](https://vercel.com).
+
+This project boasts a simple waitlist subscription option and interactible mobile phones on the landing page to get the gist of the waitlist product instantly.
 
 ## Getting started
 
-To get started with this template, first install the npm dependencies:
+To get started with the project, first install the npm dependencies:
 
 ```bash
 npm install
@@ -18,18 +20,16 @@ npm run dev
 
 Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
 
-## Customizing
+## Environment variables
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+## Resend
 
-## License
+Resend is used for sending emails to users.
 
-This site template is a commercial product and is licensed under the [Tailwind UI license](https://tailwindui.com/license).
+`RESEND_API_KEY` - is used to provide the API key for the Resend client.
 
-## Learn more
+## Redis
 
-To learn more about the technologies used in this site template, see the following resources:
+Redis is used to keep simple track of the number of subscribed people to the waitlist. I just really wanted to try Redis out.
 
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
+`REDIS_URL` - The connection URL to the Redis instance
